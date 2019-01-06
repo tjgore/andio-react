@@ -43,7 +43,7 @@ const Footer = (props) => {
 			              <a href="test" className="txt-gray-600 hvr-gray-dark hvr-nounderline">Privacy</a>
 			            </li>
 			        </ul>
-			        <p>&copy; Andio 2018</p>
+			        <p>&copy; Andio 2019</p>
 			      </div>
 			    </div>
 			  </div>

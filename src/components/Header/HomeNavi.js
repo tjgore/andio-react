@@ -13,7 +13,7 @@ const HomeNavi = (props) => {
 		<div>
 			 <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
 		    <div className="container">
-		      <NavLink to="/" exact className="navbar-brand font-weight-bold"><img src={logo} alt="logo" className="img-fluid hg-40" /></NavLink>
+		      <NavLink to="/" onClick={closeMobileMenu} exact className="navbar-brand font-weight-bold"><img src={logo} alt="logo" className="img-fluid hg-40" /></NavLink>
 		      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent3" aria-controls="navbarSupportedContent3" aria-expanded="false" aria-label="Toggle navigation">
 		        <span className="navbar-toggler-icon"></span>
 		      </button>
@@ -21,7 +21,7 @@ const HomeNavi = (props) => {
 		      <div className="collapse navbar-collapse" id="navbarSupportedContent3">
 		        <ul className="navbar-nav ml-auto">
 		          <li className="nav-item px-2 pt-3 pt-lg-0">
-		            <NavLink to="/" activeClassName="txt-gray-900" exact className="nav-link">Home <span className="sr-only">(current)</span></NavLink>
+		            <NavLink to="/" activeClassName="txt-gray-900" onClick={closeMobileMenu} exact className="nav-link">Home <span className="sr-only">(current)</span></NavLink>
 		          </li>
 		          <li className="nav-item px-2">
 		            <ScrollLink smooth to="/#about" onClick={closeMobileMenu} className="nav-link">About</ScrollLink>

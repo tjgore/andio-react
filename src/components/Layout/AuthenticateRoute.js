@@ -21,7 +21,7 @@ class AuthenticatedRoute extends React.Component {
 		if (!auth && !okPath) {
 			return (<Route render={(props) => <Redirect to={{pathname: '/sign-in', state: {from:this.props.location} }}/> } />)
 		} else if (auth && okPath) {
-			let lastViewedPage = '/user/myrequests/'
+			let lastViewedPage = '/user/request'
 			if (typeof this.props.location.state !== 'undefined') {
 				if (typeof this.props.location.state.from.pathname !== 'undefined'){
 					 lastViewedPage = this.props.location.state.from.pathname

@@ -81,9 +81,9 @@ const Signin = (props) => {
 		})
 	}
 
-	if (!props.getLoading) {
 	return( 
 		<div>
+		{ (props.getLoading) ? (<div className="signinLoading"></div>) : null }
 			<section className="headerimg hg-700" style={{ backgroundImage: "url(/img/group.jpg)" }}>
 				<div className="bg-black-5 h-100">
 					<div className="container">
@@ -119,7 +119,6 @@ const Signin = (props) => {
 			</section>
 		</div>
 		)
-	} else return null
 }
 
 const mapDispatchToProps = dispatch => {

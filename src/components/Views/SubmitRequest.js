@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { baseAxios } from './../../axios_instances'
-import axios from 'axios'
 import Schema from 'form-schema-validation'
 import { Form, TextField, TextareaField, SubmitField, SelectField } from 'react-components-form'
 import './../UI/Form.css'
 
 import { loading } from './../../store/actions/actions'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
+
 
 const SubmitRequest = (props) => {
 
@@ -70,30 +70,26 @@ const SubmitRequest = (props) => {
 		}
 		submitBtn.disabled = load
 	}
-// https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=newyork&inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyCmP3RCryz-KS8mW8hiLVE_F1Dk8BJoxvA
+
 	const getAddressLocations = () => {
 		let formattedAddress = document.getElementById('formattedAddress')
 		let address = document.querySelector('[name="location"]').value;
 
 		if (address !== '') {
-			address = encodeURI(address)
-			let googleplaces = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + address + "&inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyCmP3RCryz-KS8mW8hiLVE_F1Dk8BJoxvA"
-
 			loadingAddress(true, "block")
-			axios.get(googleplaces).then( response => {
-				if (response.data.status === 'OK') {
-					formattedAddress.innerHTML = "<span style='color:blue;'>Preferred name:</span> " + response.data.candidates[0].formatted_address
-					coordinates.lng = response.data.candidates[0].geometry.location.lng
-					coordinates.lat = response.data.candidates[0].geometry.location.lat
-					loadingAddress(false, "none")
-				} else if( response.data.status === 'ZERO_RESULTS') {
-					formattedAddress.innerHTML = "<span style='color:red;'>Not a valid address</span>"
-					loadingAddress(true, "none")
-				}
-			}).catch( error => {
-				formattedAddress.innerHTML = "<span style='color:red;'>Not a valid address</span>"
-				loadingAddress(true, "none")
-			})
+			let service = new window.google.maps.places.PlacesService(document.createElement('div'));
+				service.textSearch({ 'query': address}, function(results, status) {
+					if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+				    //console.log(results)
+				    formattedAddress.innerHTML = "<span style='color:blue;'>Preferred name:</span> " + results[0].formatted_address
+						coordinates.lng = results[0].geometry.location.lng()
+						coordinates.lat = results[0].geometry.location.lat()
+						loadingAddress(false, "none")
+				  } else if ( status === window.google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+						formattedAddress.innerHTML = "<span style='color:red;'>Not a valid address</span>"
+						loadingAddress(true, "none")
+					}
+				})
 		}
 	}
 
@@ -111,7 +107,6 @@ const SubmitRequest = (props) => {
 				category: model.category
 			}
 		}
-		
 		submitRequest(requestInfo)
 	}
 
@@ -131,7 +126,6 @@ const SubmitRequest = (props) => {
 			props.loading(false)
 			toast.warning("Request submission failed")
 		})
-
 	}
 
 	const categoryOption = [

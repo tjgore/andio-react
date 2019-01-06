@@ -53,7 +53,7 @@ const MapWithAMarkerClusterer = compose(
     onClick={() => {props.showInfo(marker.id )}}
     key={marker.id}
     position={{ lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude) }}
-    icon= {(marker.category === 'service') ? { url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png' } : { url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }}
+    icon= {(marker.category === 'service') ? { url: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png' } : { url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }}
     >
     { props.showInfoIndex === marker.id && props.isOpen
       && <InfoWindow onCloseClick={() => props.onToggleOpen()} 
