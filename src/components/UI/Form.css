@@ -1,0 +1,5 @@
+.form-group div div {
+	color: red;
+	font-size: 90%;
+}
+#messageTextarea textarea { height: 150px; }
