@@ -15,7 +15,7 @@ const Profile = (props) => {
 					</div>
 					<div className="col-md-8 pl-3 pl-md-6 pt-4 pt-md-0">
 						<h3>{props.currentUser.firstName} {props.currentUser.lastName}</h3>
-						<p className="small"><i className="fas fa-map-marker-alt"></i> {(typeof props.address.name === 'undefined') ? 'unkown location' : props.address.name }</p>
+						<p className="small"><i className="fas fa-map-marker-alt"></i> {(props.address === null) ? 'unkown location' : props.address.name }</p>
 						
 						
 
@@ -38,9 +38,8 @@ const Profile = (props) => {
 						</div>
 						<div className="d-flex align-items-center">
 							<p className="wd-200 txt-gray-900">Current Address:</p>
-							<p>{(typeof props.address.name === 'undefined') ? 'unkown location' : props.address.name }</p>
+							<p>{(props.address === null) ? 'unkown location' : props.address.name }</p>
 						</div>
-						<a className="btn btn-outline-dark hvr-white mt-3 rounded-0 btn-sm float-right">Update Profile</a>
 					</div>
 				</div>
 			</div>

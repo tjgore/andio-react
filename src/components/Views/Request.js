@@ -12,7 +12,7 @@ class Request extends React.Component {
 			<section>
 				<div className="container-fluid">
 					<div className="row">
-						<div className="col-12 col-md-4 bg-success hg-700 p-0">
+						<div className="col-12 col-md-4 bg-success map p-0">
 							<Map/>
 						</div>
 						<div className="col-12 col-md-8 p-0 map-request">

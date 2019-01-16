@@ -57,7 +57,8 @@ const Signin = (props) => {
 	})
 
 	const submitMethod = (model) => {
-		props.loading(true);
+		document.querySelector('.submit').innerHTML = "Logging in..."
+		document.querySelector('.loading').style.display = "block"
 	  console.log('valid form')
 	  let formInfo = { 
 			user: {
@@ -77,7 +78,8 @@ const Signin = (props) => {
 		})
 		.catch(error => {
 			notification.innerHTML = error.response.data.error
-			props.loading(false)
+			document.querySelector('.submit').innerHTML = "Submit"
+			document.querySelector('.loading').style.display = "none"
 		})
 	}
 
@@ -108,7 +110,8 @@ const Signin = (props) => {
 												<label className="mb-0">Password</label>
 												<TextField name="password" className="form-control" type="password" placeholder="Enter a strong password"></TextField>
 											</div>
-											<SubmitField className="btn btn-warning rounded-0 txt-white mt-2" value="Submit" />
+											<img className="loading" src="/img/loading.gif" alt="loading" style={{ display: "none"}}/>
+											<SubmitField className="submit btn btn-warning rounded-0 txt-white mt-2" value="Submit" />
 										</Form>
 									</div>
 								</div>

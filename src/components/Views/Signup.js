@@ -97,6 +97,7 @@ import './../UI/Form.css'
 	});
 
 	const submitMethod = (model) => {
+
     const image = document.querySelector("#image");
     let imageError = document.getElementById('imageError')
     imageError.innerHTML = '';
@@ -104,7 +105,9 @@ import './../UI/Form.css'
        imageError.innerHTML = 'Government picture ID is required'
       return
     }
-
+    document.querySelector('.submit').innerHTML = "Submitting..."
+    document.querySelector('.loading').style.display = "block"
+    
     let formData = new FormData();
     formData.append("image", image.files[0], 'imageId')
     formData.append("first_name", model.first_name)
@@ -115,7 +118,6 @@ import './../UI/Form.css'
 	}
 
 	const createUser = (formInfo) => {
-	props.loading(true)	
 	let notification = document.getElementById('note')
 	baseAxios.post('users', formInfo)
 		.then(response => {
@@ -126,7 +128,8 @@ import './../UI/Form.css'
 			console.log('Error Sign up: ', JSON.stringify(error))
 			//console.log(error)
 			notification.innerHTML = error.response.data.errors
-			props.loading(false)	
+			document.querySelector('.submit').innerHTML = "Submit"
+      document.querySelector('.loading').style.display = "none"	
 		})
 	}
 
@@ -174,7 +177,8 @@ import './../UI/Form.css'
 												<label className="mb-0">Password<span className="text-danger">*</span></label>
 												<TextField name="password" className="form-control" type="password"></TextField>
 											</div>
-											<SubmitField className="btn btn-warning rounded-0 txt-white mt-2" value="Submit" />
+                      <img className="loading" src="/img/loading.gif" alt="loading" style={{ display: "none"}}/>
+											<SubmitField className="submit btn btn-warning rounded-0 txt-white mt-2" value="Submit" />
 										</Form>
 									</div>
 								</div>

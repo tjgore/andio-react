@@ -3,9 +3,9 @@ import React from 'react';
 const RequestCard = (props) => {
 	let activeButton
 	if (props.showActive) {
-		let requestTimeUp = new Date(new Date(props.request.start_date).getTime() + 2*60*1000)
+		let requestTimeUp = new Date(new Date(props.request.start_date).getTime() + 24*60*60*1000)
 		let now = new Date()
-		if (props.request.start_count === 5 && now <= requestTimeUp) {
+		if (props.request.start_count === 5 && now <= requestTimeUp && props.request.status !== 'fullfilled') {
 			activeButton = <span className="badge badge-light pointer">{ (props.request.active) ? 'active' : 'work in progress for 24hrs' }
 			</span> 
 		} else { 
@@ -23,7 +23,7 @@ const RequestCard = (props) => {
 				<h5 className="font-weight-bold mb-0">{ props.request.title }</h5>
 				<div className="pb-3">
 					<span className="badge badge-light mr-2">{ props.request.category }</span>
-					<span className="badge badge-light mr-2 pointer" onClick={props.status}>{ props.request.status }</span>
+					<span className="badge badge-light mr-2 pointer" onClick={props.status}>{ (props.request.status === 'fullfilled') ? 'fulfilled' : 'not fulfilled'  }</span>
 					{
 						activeButton
 					}	 

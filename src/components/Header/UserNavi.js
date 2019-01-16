@@ -34,8 +34,11 @@ class HomeNavi extends React.Component {
     axios.get(googleGeoCoding).then( response => {
       if (response.data.status === 'OK') {
         addressName = response.data.results[3].formatted_address
+        this.props.setUsersLocation({ name: addressName, lat: position.coords.latitude, lng: position.coords.longitude })
+      } else {
+        console.log(response.data.status)
+        this.props.setUsersLocation({ name: 'unknown', lat: 40.6976684, lng: -74.2605573 })
       }
-      this.props.setUsersLocation({ name: addressName, lat: position.coords.latitude, lng: position.coords.longitude })
     })
     .catch(error => {
       console.log('Geocoding error:', error)

@@ -24,7 +24,7 @@ const MapWithAMarkerClusterer = compose(
     // dev  https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA8FgNi3T6OUefCGh9pSjm3CkxkwhKGFew",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `700px` }} />,
+    containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
    withHandlers({

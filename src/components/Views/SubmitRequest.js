@@ -9,6 +9,7 @@ import './../UI/Form.css'
 import { loading } from './../../store/actions/actions'
 import { toast } from 'react-toastify'
 
+import Script from 'react-load-script';
 
 const SubmitRequest = (props) => {
 
@@ -136,6 +137,7 @@ const SubmitRequest = (props) => {
 
 	return(
 		<div>
+		<Script attributes={{ id: 'google'}} url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmP3RCryz-KS8mW8hiLVE_F1Dk8BJoxvA&libraries=places"/>
 			<section className="bg-ash">
 				<div className="container pt-9 pb-9">
 					<div className="row">
